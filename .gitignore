@@ -1,0 +1,5 @@
+__pycache__/
+.pytest_cache/
+archive/
+output.json
+data/validated_reference_dataset.xlsx
