@@ -3,3 +3,8 @@ __pycache__/
 archive/
 output.json
 data/validated_reference_dataset.xlsx
+
+# YAML validation rules instead of Python
+# rules_config.yaml
+# validation_rules_yaml.py
+# tests/test_sql_logic_yaml.py

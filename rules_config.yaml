@@ -1,0 +1,29 @@
+common_rules:
+  randomized_patients:
+    type: integer
+    min: 0
+  trial_status:
+    type: string
+    allowed: ["recruitment", "ongoing", "completed"]
+  active_sites:
+    type: integer
+    min: 0
+  active_patients:
+    type: integer
+    min: 0
+
+queries: {} # not necessary for these queries
+  # active_sites_positive:
+  #   rules:
+  #     active_sites:
+  #       type: integer
+  #       min: 0
+  # randomized_patients_positive:
+  #   rules:
+  #     randomized_patients:
+  #       type: integer
+  #       min: 0
+  #     trial_status:
+  #       type: string
+  #       allowed: ["recruitment", "ongoing", "completed"]
+
