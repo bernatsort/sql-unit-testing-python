@@ -42,6 +42,6 @@ common_rules = {
 
 # Specific validation rules for different queries (if needed)
 # Include them in the testing script (test_sql_logic.py): from validation import validate_entry, common_rules, query1_rules, query2_rules
-query1_rules = {}  
-query2_rules = {}  
+active_sites_positive_rules = {}  
+randomized_patients_positive_rules = {}  
 
