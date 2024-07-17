@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import pytest
 import json
 from sql_queries.sql_queries import query1, query2
-from validation import is_valid_entry_query1, is_valid_entry_query2
+from validation import validate_entry, common_rules
 
 def fetch_results_as_dict(results):
     return [dict(row) for row in results]
@@ -25,7 +25,7 @@ def test_query1(db_connection):
     results_dict = fetch_results_as_dict(results)
 
     # Filtrar resultados válidos
-    filtered_results = [result for result in results_dict if is_valid_entry_query1(result)]
+    filtered_results = [result for result in results_dict if validate_entry(result, common_rules)]
 
     # Comparar con resultados esperados
     expected = expected_results[query_name]["expected"]
@@ -38,7 +38,7 @@ def test_query2(db_connection):
     results_dict = fetch_results_as_dict(results)
 
     # Filtrar resultados válidos
-    filtered_results = [result for result in results_dict if is_valid_entry_query2(result)]
+    filtered_results = [result for result in results_dict if validate_entry(result, common_rules)]
 
     # Comparar con resultados esperados
     expected = expected_results[query_name]["expected"]
