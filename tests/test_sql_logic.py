@@ -1,12 +1,10 @@
-# tests/test_queries.py
+# tests/test_sql_logic.py
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 import pytest
 import json
-from sql_queries.sql_queries import query1, query2
-from validation import validate_entry, common_rules
+from validation_rules import validate_entry, common_rules
 
 def fetch_results_as_dict(results):
     return [dict(row) for row in results]
@@ -18,9 +16,14 @@ def load_expected_results():
 
 expected_results = load_expected_results()
 
+def load_sql_query(file_name):
+    sql_path = os.path.join(os.path.dirname(__file__), '..', 'sql_queries', file_name)
+    with open(sql_path, 'r') as file:
+        return file.read()
+
 def test_query1(db_connection):
-    query_name = "query1"
-    query_sql = query1()
+    query_name = "active_sites_positive"
+    query_sql = load_sql_query("active_sites_positive.sql")
     results = db_connection.execute(query_sql)
     results_dict = fetch_results_as_dict(results)
 
@@ -32,8 +35,8 @@ def test_query1(db_connection):
     assert filtered_results == expected, f"Error in {query_name}: {filtered_results} != {expected}"
 
 def test_query2(db_connection):
-    query_name = "query2"
-    query_sql = query2()
+    query_name = "randomized_patients_positive"
+    query_sql = load_sql_query("randomized_patients_positive.sql")
     results = db_connection.execute(query_sql)
     results_dict = fetch_results_as_dict(results)
 
@@ -43,3 +46,5 @@ def test_query2(db_connection):
     # Comparar con resultados esperados
     expected = expected_results[query_name]["expected"]
     assert filtered_results == expected, f"Error in {query_name}: {filtered_results} != {expected}"
+
+

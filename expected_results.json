@@ -1,5 +1,5 @@
 {
-    "query1": {
+    "active_sites_positive": {
         "expected": [
             {"study": "1368-0015", "site": "DEU1", "active_sites": 3},
             {"study": "1368-0004", "site": "DEU2", "active_sites": 2},
@@ -7,7 +7,7 @@
             {"study": "1368-0018", "site": "DEU5", "active_sites": 3}
         ]
     },
-    "query2": {
+    "randomized_patients_positive": {
         "expected": [
             {"study": "1368-0015", "site": "DEU1", "randomized_patients": 40, "trial_status": "recruitment"},
             {"study": "1368-0004", "site": "DEU2", "randomized_patients": 35, "trial_status": "ongoing"},
