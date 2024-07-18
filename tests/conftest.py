@@ -14,3 +14,4 @@ def db_connection():
     connection = engine.connect()
     yield connection
     connection.close()
+    engine.dispose() # Dispose the engine after closing the connection
