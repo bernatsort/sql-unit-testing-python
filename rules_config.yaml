@@ -4,7 +4,7 @@ common_rules:
     min: 0
   trial_status:
     type: string
-    allowed: ["recruitment", "ongoing", "completed"]
+    allowed: ["recruitment", "ongoing", "completed", "on hold"]
   active_sites:
     type: integer
     min: 0

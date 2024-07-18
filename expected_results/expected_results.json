@@ -11,7 +11,14 @@
         "expected": [
             {"study": "1368-0015", "site": "DEU1", "randomized_patients": 40, "trial_status": "recruitment"},
             {"study": "1368-0004", "site": "DEU2", "randomized_patients": 35, "trial_status": "ongoing"},
+            {"study": "1368-0016", "site": "DEU3", "randomized_patients": 10, "trial_status": "completed"},
+            {"study": "1368-0017", "site": "DEU4", "randomized_patients": 25, "trial_status": "on hold"},
             {"study": "1368-0018", "site": "DEU5", "randomized_patients": 50, "trial_status": "recruitment"}
+        ]
+    },
+    "active_patients_date": {
+        "expected": [
+            {"week": "2017-31", "active_patients": 30}
         ]
     }
 }
