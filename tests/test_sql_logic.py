@@ -10,7 +10,7 @@ def expected_results():
     return load_expected_results()
 
 def fetch_results_as_dict(results):
-    return [dict(row) for row in results]
+    return [dict(row._mapping) for row in results] # convert results to dictionaries. Use _mapping to avoid deprecation warnings. 
 
 def load_expected_results():
     json_path = os.path.join(os.path.dirname(__file__), '..', 'expected_results/expected_results.json')
