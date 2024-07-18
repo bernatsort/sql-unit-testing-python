@@ -3,6 +3,7 @@ import sys
 import os
 import pytest
 import json
+from sqlalchemy import text
 
 @pytest.fixture(scope='module')
 def expected_results():
@@ -29,7 +30,7 @@ def run_query_test(db_connection, expected_results, query_name, sql_file):
     This function is called by the individual test functions to perform the shared logic.
     """
     query_sql = load_sql_query(sql_file)
-    results = db_connection.execute(query_sql)
+    results = db_connection.execute(text(query_sql))
     results_dict = fetch_results_as_dict(results)
 
     # Compare with expected results
