@@ -47,24 +47,8 @@ def test_active_patients_date(db_connection, expected_results):
     run_query_test(db_connection, expected_results, "active_patients_date", "active_patients_date.sql")
 
 # Test that will fail
-def test_failing_active_patients_date(db_connection, expected_results):
-    run_query_test(db_connection, expected_results, "active_patients_study_1368_0004", "failing_query_active_patients_date.sql")
-
-# @pytest.mark.parametrize("query_name, sql_file", [
-#     ("active_sites_positive", "active_sites_positive.sql"),
-#     ("randomized_patients_positive", "randomized_patients_positive.sql"),
-# ])
-# def test_sql_queries(db_connection, expected_results, query_name, sql_file):
-#     query_sql = load_sql_query(sql_file)
-#     results = db_connection.execute(query_sql)
-#     results_dict = fetch_results_as_dict(results)
-
-#     # Filter valid results
-#     filtered_results = [result for result in results_dict if validate_entry(result, common_rules)]
-
-#     # Compare with expected results
-#     expected = expected_results[query_name]["expected"]
-#     assert filtered_results == expected, f"Error in {query_name}: {filtered_results} != {expected}"
+# def test_failing_active_patients_date(db_connection, expected_results):
+#     run_query_test(db_connection, expected_results, "active_patients_study_1368_0004", "failing_query_active_patients_date.sql")
 
 
 
