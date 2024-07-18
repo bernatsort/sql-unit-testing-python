@@ -47,7 +47,7 @@ def test_randomized_patients_positive(db_connection, expected_results):
 def test_active_patients_date(db_connection, expected_results):
     run_query_test(db_connection, expected_results, "active_patients_date", "active_patients_date.sql")
 
-# Test that will fail
+# # Test that will fail
 # def test_failing_active_patients_date(db_connection, expected_results):
 #     run_query_test(db_connection, expected_results, "active_patients_study_1368_0004", "failing_query_active_patients_date.sql")
 

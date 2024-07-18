@@ -1,6 +1,13 @@
 name: CI Pipeline
 
-on: [push, pull_request]
+# on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # Ejecuta la pipeline en push a la rama main
+  pull_request:
+    branches:
+      - '*'  # Ejecuta la pipeline en todas las pull requests
 
 jobs:
   test:
