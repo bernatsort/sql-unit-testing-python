@@ -2,9 +2,5 @@ __pycache__/
 .pytest_cache/
 archive/
 output.json
-data/validated_reference_dataset.xlsx
+#ata/validated_reference_dataset.xlsx
 
-# YAML validation rules instead of Python
-# rules_config.yaml
-# validation_rules_yaml.py
-# tests/test_sql_logic_yaml.py

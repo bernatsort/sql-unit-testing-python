@@ -20,5 +20,10 @@
         "expected": [
             {"week": "2017-31", "active_patients": 30}
         ]
+    },
+    "active_patients_study_1368_0004": {
+        "expected": [
+            {"week": "2017-34", "active_patients": 60}
+        ]
     }
 }
