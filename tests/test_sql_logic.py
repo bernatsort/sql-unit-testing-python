@@ -23,35 +23,46 @@ def load_sql_query(file_name):
         return file.read()
 
 def run_query_test(db_connection, expected_results, query_name, sql_file):
-    """
-    Helper function to run a SQL query and validate its results.
-    It encapsulates the common logic for running a SQL query, fetching results, 
-    filtering valid results, and comparing them with expected results. 
-    This function is called by the individual test functions to perform the shared logic.
-    """
-    query_sql = load_sql_query(sql_file)
-    results = db_connection.execute(text(query_sql))
-    results_dict = fetch_results_as_dict(results)
-
+    try: 
+        """
+        Helper function to run a SQL query and validate its results.
+        It encapsulates the common logic for running a SQL query, fetching results, 
+        filtering valid results, and comparing them with expected results. 
+        This function is called by the individual test functions to perform the shared logic.
+        """
+        query_sql = load_sql_query(sql_file)
+        results = db_connection.execute(text(query_sql))
+        results_dict = fetch_results_as_dict(results)
+    except Exception as e: 
+        pytest.fail(f"Error al ejecutar la consulta {query_name}: {str(e)}")
+    
     # Compare with expected results
     expected = expected_results[query_name]["expected"]
     assert results_dict == expected, f"Error in {query_name}: {results_dict} != {expected}"
 
-# Tests
-def test_active_sites_positive(db_connection, expected_results):
-    run_query_test(db_connection, expected_results, "active_sites_positive", "active_sites_positive.sql")
+# # Tests
+# def test_active_sites_positive(db_connection, expected_results):
+#     run_query_test(db_connection, expected_results, "active_sites_positive", "active_sites_positive.sql")
 
-def test_randomized_patients_positive(db_connection, expected_results):
-    run_query_test(db_connection, expected_results, "randomized_patients_positive", "randomized_patients_positive.sql")
+# def test_randomized_patients_positive(db_connection, expected_results):
+#     run_query_test(db_connection, expected_results, "randomized_patients_positive", "randomized_patients_positive.sql")
 
-def test_active_patients_date(db_connection, expected_results):
-    run_query_test(db_connection, expected_results, "active_patients_date", "active_patients_date.sql")
+# def test_active_patients_date(db_connection, expected_results):
+#     run_query_test(db_connection, expected_results, "active_patients_date", "active_patients_date.sql")
 
 # # Test that will fail
 # def test_failing_active_patients_date(db_connection, expected_results):
 #     run_query_test(db_connection, expected_results, "active_patients_study_1368_0004", "failing_query_active_patients_date.sql")
 
-
+# Parametrized test
+@pytest.mark.parametrize("query_name, sql_file", [
+    ("active_sites_positive", "active_sites_positive.sql")
+    ,("randomized_patients_positive", "randomized_patients_positive.sql")
+    ,("active_patients_date", "active_patients_date.sql")
+    # ,("active_patients_study_1368_0004", "failing_query_active_patients_date.sql")
+])
+def test_sql_queries(db_connection, expected_results, query_name, sql_file):
+    run_query_test(db_connection, expected_results, query_name, sql_file)
 
 
 
