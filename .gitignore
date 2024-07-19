@@ -2,5 +2,6 @@ __pycache__/
 .pytest_cache/
 archive/
 output.json
-#ata/validated_reference_dataset.xlsx
+#data/validated_reference_dataset.xlsx
 
+tests/pytest_html_report.html
